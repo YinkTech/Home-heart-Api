@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:destroy]
 
   def index
     @reservations = Reservation.all
@@ -27,14 +26,10 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    if @reservation.destroy
-      render json: Reservation.all
-    else
-      render json: { error: 'Reservation deletion was unsuccessful' }
-    end
+    @reservations = Reservation.all
+    Reservation.find(params[:id]).destroy!
+    render json: @reservations
   end
-
-  private
 
   def reservations_params
     params.permit(:user, :house, :start_date)

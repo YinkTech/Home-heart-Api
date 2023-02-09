@@ -25,13 +25,12 @@ class HousesController < ApplicationController
   end
   
   def destroy
-    @houses = House.all 
+    @houses = House.all
     House.find(params[:id]).destroy!
     render json: @houses
   end
   
   def house_params
-    # image = Cloudinary::Uploader.upload(params[:image])   ).merge(image: image['url']
     params.permit(:title, :description, :location, :price, :image)
   end
 end
