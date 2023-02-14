@@ -16,7 +16,8 @@ group :production do
 end
 
 
-
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
+gem 'cloudinary', '~> 1.25'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -57,3 +58,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
+
+gem "redis", "~> 5.0"

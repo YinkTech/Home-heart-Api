@@ -31,6 +31,7 @@ class HousesController < ApplicationController
   end
   
   def house_params
-    params.permit(:title, :description, :location, :price, :image, :current_user)
+    image = Cloudinary::Uploader.upload(params[:image])
+    params.permit(:title, :description, :location, :price, :current_user).merge(image: image['url'])
   end
 end
